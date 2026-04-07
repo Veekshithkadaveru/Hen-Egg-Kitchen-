@@ -1,0 +1,1026 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Egg Breakfasts",
+      "icon": "chick19_sym_1",
+      "background": "chick19_back_1",
+      "accentColor": "#F9A825",
+      "recipes": [
+        {
+          "id": 1,
+          "categoryId": 1,
+          "title": "Classic Scrambled Eggs",
+          "prepMins": 2,
+          "cookMins": 5,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["eggs", "breakfast", "quick"],
+          "ingredients": [
+            { "name": "eggs", "amount": 4, "unit": "whole" },
+            { "name": "butter", "amount": 2, "unit": "tbsp" },
+            { "name": "milk", "amount": 3, "unit": "tbsp" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" },
+            { "name": "fresh chives", "amount": 1, "unit": "handful" }
+          ],
+          "steps": [
+            "Crack eggs into a bowl. Add milk, salt and pepper and whisk well.",
+            "Melt butter in a non-stick pan over low heat.",
+            "Pour in egg mixture. Stir gently and continuously with a spatula, pulling eggs from the edges to the centre.",
+            "Remove from heat while still slightly wet — they will finish cooking in the pan.",
+            "Garnish with chives and serve immediately."
+          ],
+          "tip": "Low and slow is the secret. High heat makes rubbery scrambled eggs."
+        },
+        {
+          "id": 2,
+          "categoryId": 1,
+          "title": "Perfect Fried Eggs",
+          "prepMins": 1,
+          "cookMins": 4,
+          "baseServings": 1,
+          "difficulty": "Easy",
+          "tags": ["eggs", "breakfast", "quick"],
+          "ingredients": [
+            { "name": "eggs", "amount": 2, "unit": "whole" },
+            { "name": "olive oil", "amount": 1, "unit": "tbsp" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" },
+            { "name": "butter", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Heat olive oil and butter in a non-stick pan over medium heat.",
+            "Crack eggs gently into the pan.",
+            "Cook until whites are set but yolks are still runny, about 2-3 minutes.",
+            "Season with salt and pepper and serve immediately."
+          ],
+          "tip": "Baste the tops with hot oil for perfectly set whites and runny yolks."
+        },
+        {
+          "id": 3,
+          "categoryId": 1,
+          "title": "Egg & Cheese Omelette",
+          "prepMins": 3,
+          "cookMins": 6,
+          "baseServings": 1,
+          "difficulty": "Medium",
+          "tags": ["eggs", "breakfast", "cheese"],
+          "ingredients": [
+            { "name": "eggs", "amount": 3, "unit": "whole" },
+            { "name": "cheddar cheese", "amount": 50, "unit": "g" },
+            { "name": "butter", "amount": 1, "unit": "tbsp" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" },
+            { "name": "fresh parsley", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Beat eggs with salt and pepper.",
+            "Melt butter in a pan over medium heat. Pour in eggs.",
+            "When edges set, push cooked edges toward centre and tilt pan to let uncooked egg flow to edges.",
+            "Add grated cheddar to one half. Fold omelette in half.",
+            "Cook 1 more minute until cheese melts. Garnish with parsley and slide onto a plate."
+          ],
+          "tip": "Don't overfill — a moderate amount of cheese melts better and prevents breaking."
+        },
+        {
+          "id": 4,
+          "categoryId": 1,
+          "title": "Eggs Benedict",
+          "prepMins": 10,
+          "cookMins": 15,
+          "baseServings": 2,
+          "difficulty": "Hard",
+          "tags": ["eggs", "breakfast", "brunch"],
+          "ingredients": [
+            { "name": "eggs", "amount": 4, "unit": "whole" },
+            { "name": "English muffins", "amount": 2, "unit": "whole" },
+            { "name": "Canadian bacon", "amount": 4, "unit": "slices" },
+            { "name": "egg yolks", "amount": 3, "unit": "whole" },
+            { "name": "butter", "amount": 100, "unit": "g" },
+            { "name": "lemon juice", "amount": 1, "unit": "tbsp" },
+            { "name": "white vinegar", "amount": 1, "unit": "tbsp" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "cayenne pepper", "amount": 1, "unit": "pinch" }
+          ],
+          "steps": [
+            "Make hollandaise: whisk egg yolks and lemon juice over a double boiler until thick. Slowly drizzle in melted butter. Season with cayenne and salt. Keep warm.",
+            "Toast English muffin halves. Top each with Canadian bacon.",
+            "Poach eggs: bring water and vinegar to a gentle simmer. Create a vortex and slide eggs in. Cook 3 minutes.",
+            "Place a poached egg on each muffin. Spoon hollandaise over the top.",
+            "Serve immediately with extra cayenne if desired."
+          ],
+          "tip": "Fresh eggs poach better — the whites hold together more tightly."
+        },
+        {
+          "id": 5,
+          "categoryId": 1,
+          "title": "Breakfast Egg Muffins",
+          "prepMins": 10,
+          "cookMins": 20,
+          "baseServings": 6,
+          "difficulty": "Easy",
+          "tags": ["eggs", "breakfast", "meal-prep"],
+          "ingredients": [
+            { "name": "eggs", "amount": 6, "unit": "whole" },
+            { "name": "milk", "amount": 3, "unit": "tbsp" },
+            { "name": "bell pepper", "amount": 0.5, "unit": "whole" },
+            { "name": "ham", "amount": 60, "unit": "g" },
+            { "name": "cheddar cheese", "amount": 60, "unit": "g" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" }
+          ],
+          "steps": [
+            "Preheat oven to 180°C (350°F). Grease a 6-cup muffin tin.",
+            "Dice bell pepper and ham into small pieces. Grate cheese.",
+            "Whisk eggs, milk, salt and pepper in a bowl.",
+            "Distribute veggies, ham and cheese evenly among muffin cups.",
+            "Pour egg mixture over fillings. Bake 18-20 minutes until set and lightly golden."
+          ],
+          "tip": "Make a batch on Sunday for quick grab-and-go breakfasts all week."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Grilled & Roasted",
+      "icon": "chick19_sym_2",
+      "background": "chick19_back_2",
+      "accentColor": "#E64A19",
+      "recipes": [
+        {
+          "id": 6,
+          "categoryId": 2,
+          "title": "Classic Roast Chicken",
+          "prepMins": 15,
+          "cookMins": 75,
+          "baseServings": 4,
+          "difficulty": "Medium",
+          "tags": ["chicken", "roasted", "dinner"],
+          "ingredients": [
+            { "name": "whole chicken", "amount": 1.5, "unit": "kg" },
+            { "name": "butter", "amount": 3, "unit": "tbsp" },
+            { "name": "garlic", "amount": 4, "unit": "cloves" },
+            { "name": "lemon", "amount": 1, "unit": "whole" },
+            { "name": "rosemary", "amount": 2, "unit": "sprigs" },
+            { "name": "salt", "amount": 2, "unit": "tsp" },
+            { "name": "pepper", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Preheat oven to 220°C (425°F).",
+            "Pat chicken dry. Rub butter all over the skin. Season generously with salt and pepper.",
+            "Stuff cavity with halved lemon, smashed garlic and rosemary.",
+            "Roast 60-75 minutes until internal temperature reaches 74°C (165°F).",
+            "Rest 15 minutes before carving. Spoon pan juices over the top."
+          ],
+          "tip": "A dry bird = crispy skin. Pat the chicken thoroughly before seasoning."
+        },
+        {
+          "id": 7,
+          "categoryId": 2,
+          "title": "Grilled Chicken Breast",
+          "prepMins": 10,
+          "cookMins": 15,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["chicken", "grilled", "healthy"],
+          "ingredients": [
+            { "name": "chicken breasts", "amount": 2, "unit": "whole" },
+            { "name": "olive oil", "amount": 2, "unit": "tbsp" },
+            { "name": "garlic powder", "amount": 1, "unit": "tsp" },
+            { "name": "paprika", "amount": 1, "unit": "tsp" },
+            { "name": "salt", "amount": 1, "unit": "tsp" },
+            { "name": "pepper", "amount": 0.5, "unit": "tsp" },
+            { "name": "lemon", "amount": 1, "unit": "whole" }
+          ],
+          "steps": [
+            "Pound chicken breasts to even thickness (about 2cm).",
+            "Mix olive oil, garlic powder, paprika, salt and pepper. Coat chicken.",
+            "Marinate at least 15 minutes or overnight.",
+            "Grill over medium-high heat 6-7 minutes per side until internal temp reaches 74°C.",
+            "Squeeze fresh lemon over the top and rest 5 minutes before slicing."
+          ],
+          "tip": "Even thickness ensures uniform cooking — no more dry edges and raw centres."
+        },
+        {
+          "id": 8,
+          "categoryId": 2,
+          "title": "BBQ Chicken Thighs",
+          "prepMins": 10,
+          "cookMins": 35,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["chicken", "bbq", "grilled"],
+          "ingredients": [
+            { "name": "chicken thighs", "amount": 8, "unit": "whole" },
+            { "name": "BBQ sauce", "amount": 150, "unit": "ml" },
+            { "name": "olive oil", "amount": 2, "unit": "tbsp" },
+            { "name": "garlic powder", "amount": 1, "unit": "tsp" },
+            { "name": "salt", "amount": 1, "unit": "tsp" },
+            { "name": "pepper", "amount": 0.5, "unit": "tsp" }
+          ],
+          "steps": [
+            "Preheat grill to medium heat. Season thighs with oil, garlic powder, salt and pepper.",
+            "Grill skin-side down 15 minutes. Flip and grill another 10 minutes.",
+            "Brush generously with BBQ sauce. Grill 5 more minutes until caramelised.",
+            "Rest 5 minutes and serve with extra sauce on the side."
+          ],
+          "tip": "Apply sauce in the last 5 minutes to prevent burning the sugar in the BBQ sauce."
+        },
+        {
+          "id": 9,
+          "categoryId": 2,
+          "title": "Lemon Herb Roasted Chicken Wings",
+          "prepMins": 10,
+          "cookMins": 45,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["chicken", "wings", "roasted"],
+          "ingredients": [
+            { "name": "chicken wings", "amount": 1, "unit": "kg" },
+            { "name": "olive oil", "amount": 3, "unit": "tbsp" },
+            { "name": "lemon", "amount": 2, "unit": "whole" },
+            { "name": "dried oregano", "amount": 2, "unit": "tsp" },
+            { "name": "garlic", "amount": 3, "unit": "cloves" },
+            { "name": "salt", "amount": 1, "unit": "tsp" },
+            { "name": "pepper", "amount": 0.5, "unit": "tsp" }
+          ],
+          "steps": [
+            "Preheat oven to 200°C (400°F). Line a baking tray with parchment.",
+            "Pat wings completely dry. Toss with oil, zest of 1 lemon, oregano, minced garlic, salt and pepper.",
+            "Arrange wings in a single layer on the tray.",
+            "Roast 40-45 minutes, flipping halfway, until golden and crispy.",
+            "Squeeze juice of the second lemon over the top and serve."
+          ],
+          "tip": "Dry wings = crispy wings. Pat them with paper towels thoroughly before seasoning."
+        },
+        {
+          "id": 10,
+          "categoryId": 2,
+          "title": "Honey Garlic Chicken Drumsticks",
+          "prepMins": 10,
+          "cookMins": 40,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["chicken", "drumsticks", "baked"],
+          "ingredients": [
+            { "name": "chicken drumsticks", "amount": 8, "unit": "whole" },
+            { "name": "honey", "amount": 4, "unit": "tbsp" },
+            { "name": "soy sauce", "amount": 3, "unit": "tbsp" },
+            { "name": "garlic", "amount": 4, "unit": "cloves" },
+            { "name": "olive oil", "amount": 1, "unit": "tbsp" },
+            { "name": "ginger", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Preheat oven to 200°C (400°F).",
+            "Mix honey, soy sauce, minced garlic, grated ginger and oil.",
+            "Place drumsticks in a baking dish. Pour glaze over them.",
+            "Bake 35-40 minutes, basting halfway through.",
+            "Rest 5 minutes. Spoon remaining glaze from the dish over the top."
+          ],
+          "tip": "Line the baking dish with foil for quick cleanup — the glaze gets sticky."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Stews & Curries",
+      "icon": "chick19_sym_3",
+      "background": "chick19_back_3",
+      "accentColor": "#BF360C",
+      "recipes": [
+        {
+          "id": 11,
+          "categoryId": 3,
+          "title": "Classic Chicken Stew",
+          "prepMins": 15,
+          "cookMins": 60,
+          "baseServings": 6,
+          "difficulty": "Medium",
+          "tags": ["chicken", "stew", "comfort"],
+          "ingredients": [
+            { "name": "chicken thighs", "amount": 800, "unit": "g" },
+            { "name": "potatoes", "amount": 3, "unit": "whole" },
+            { "name": "carrots", "amount": 2, "unit": "whole" },
+            { "name": "onion", "amount": 1, "unit": "whole" },
+            { "name": "celery", "amount": 2, "unit": "stalks" },
+            { "name": "chicken stock", "amount": 500, "unit": "ml" },
+            { "name": "thyme", "amount": 2, "unit": "sprigs" },
+            { "name": "flour", "amount": 2, "unit": "tbsp" },
+            { "name": "olive oil", "amount": 2, "unit": "tbsp" },
+            { "name": "salt", "amount": 1, "unit": "tsp" },
+            { "name": "pepper", "amount": 0.5, "unit": "tsp" }
+          ],
+          "steps": [
+            "Cut chicken into bite-sized pieces. Dice potatoes, carrots, onion and celery.",
+            "Heat oil in a large pot. Brown chicken in batches. Set aside.",
+            "Sauté onion and celery 3 minutes. Stir in flour and cook 1 minute.",
+            "Add stock, thyme, potatoes, carrots and chicken. Bring to a simmer.",
+            "Cover and cook 45 minutes on low heat until chicken is tender and sauce thickens."
+          ],
+          "tip": "Brown the chicken first — it adds deep flavour to the entire stew."
+        },
+        {
+          "id": 12,
+          "categoryId": 3,
+          "title": "Chicken Tikka Masala",
+          "prepMins": 20,
+          "cookMins": 40,
+          "baseServings": 4,
+          "difficulty": "Medium",
+          "tags": ["chicken", "curry", "indian"],
+          "ingredients": [
+            { "name": "chicken breast", "amount": 600, "unit": "g" },
+            { "name": "yogurt", "amount": 150, "unit": "ml" },
+            { "name": "tikka masala paste", "amount": 3, "unit": "tbsp" },
+            { "name": "onion", "amount": 1, "unit": "whole" },
+            { "name": "garlic", "amount": 3, "unit": "cloves" },
+            { "name": "tomato sauce", "amount": 400, "unit": "ml" },
+            { "name": "cream", "amount": 100, "unit": "ml" },
+            { "name": "ginger", "amount": 1, "unit": "tbsp" },
+            { "name": "cilantro", "amount": 1, "unit": "handful" }
+          ],
+          "steps": [
+            "Marinate cubed chicken in yogurt and 1 tbsp tikka paste for at least 30 minutes.",
+            "Grill or pan-fry marinated chicken until charred. Set aside.",
+            "Sauté diced onion, garlic and ginger until soft. Add remaining tikka paste.",
+            "Pour in tomato sauce and simmer 15 minutes.",
+            "Add chicken and cream. Simmer 10 more minutes. Garnish with cilantro and serve with rice."
+          ],
+          "tip": "Grilling the marinated chicken gives that authentic tandoori char flavour."
+        },
+        {
+          "id": 13,
+          "categoryId": 3,
+          "title": "Thai Green Chicken Curry",
+          "prepMins": 15,
+          "cookMins": 25,
+          "baseServings": 4,
+          "difficulty": "Medium",
+          "tags": ["chicken", "curry", "thai"],
+          "ingredients": [
+            { "name": "chicken thighs", "amount": 500, "unit": "g" },
+            { "name": "coconut milk", "amount": 400, "unit": "ml" },
+            { "name": "green curry paste", "amount": 2, "unit": "tbsp" },
+            { "name": "bamboo shoots", "amount": 100, "unit": "g" },
+            { "name": "bell pepper", "amount": 1, "unit": "whole" },
+            { "name": "fish sauce", "amount": 1, "unit": "tbsp" },
+            { "name": "brown sugar", "amount": 1, "unit": "tsp" },
+            { "name": "Thai basil", "amount": 1, "unit": "handful" },
+            { "name": "lime leaves", "amount": 4, "unit": "whole" }
+          ],
+          "steps": [
+            "Slice chicken into thin strips. Slice bell pepper.",
+            "Heat a few tbsp of thick coconut cream (from the top of the can) in a wok until oil separates.",
+            "Fry curry paste 1 minute until fragrant. Add chicken and cook until sealed.",
+            "Pour in remaining coconut milk. Add bamboo shoots, bell pepper, lime leaves, fish sauce and sugar.",
+            "Simmer 15 minutes. Stir in Thai basil just before serving with jasmine rice."
+          ],
+          "tip": "Frying the curry paste in coconut cream blooms the spices and intensifies flavour."
+        },
+        {
+          "id": 14,
+          "categoryId": 3,
+          "title": "Chicken & Dumpling Stew",
+          "prepMins": 20,
+          "cookMins": 50,
+          "baseServings": 6,
+          "difficulty": "Medium",
+          "tags": ["chicken", "stew", "comfort"],
+          "ingredients": [
+            { "name": "chicken breast", "amount": 600, "unit": "g" },
+            { "name": "carrots", "amount": 3, "unit": "whole" },
+            { "name": "celery", "amount": 2, "unit": "stalks" },
+            { "name": "onion", "amount": 1, "unit": "whole" },
+            { "name": "chicken stock", "amount": 750, "unit": "ml" },
+            { "name": "flour", "amount": 200, "unit": "g" },
+            { "name": "baking powder", "amount": 2, "unit": "tsp" },
+            { "name": "butter", "amount": 50, "unit": "g" },
+            { "name": "milk", "amount": 120, "unit": "ml" },
+            { "name": "thyme", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Cook diced chicken, carrots, celery and onion in a pot with stock and thyme for 25 minutes.",
+            "For dumplings: mix flour, baking powder, salt, cold butter and milk into a soft dough.",
+            "Drop spoonfuls of dough on top of the simmering stew.",
+            "Cover and cook 15 minutes without lifting the lid — steam cooks the dumplings.",
+            "Serve immediately in deep bowls."
+          ],
+          "tip": "Don't peek! Lifting the lid releases steam and the dumplings won't rise properly."
+        },
+        {
+          "id": 15,
+          "categoryId": 3,
+          "title": "Butter Chicken (Murgh Makhani)",
+          "prepMins": 15,
+          "cookMins": 35,
+          "baseServings": 4,
+          "difficulty": "Medium",
+          "tags": ["chicken", "curry", "indian"],
+          "ingredients": [
+            { "name": "chicken thighs", "amount": 700, "unit": "g" },
+            { "name": "butter", "amount": 4, "unit": "tbsp" },
+            { "name": "tomato puree", "amount": 400, "unit": "ml" },
+            { "name": "cream", "amount": 100, "unit": "ml" },
+            { "name": "garam masala", "amount": 2, "unit": "tsp" },
+            { "name": "cumin", "amount": 1, "unit": "tsp" },
+            { "name": "garlic", "amount": 3, "unit": "cloves" },
+            { "name": "ginger", "amount": 1, "unit": "tbsp" },
+            { "name": "sugar", "amount": 1, "unit": "tsp" },
+            { "name": "kasuri methi", "amount": 1, "unit": "tbsp" }
+          ],
+          "steps": [
+            "Marinate chicken in garam masala and a pinch of salt for 15 minutes.",
+            "Sear chicken in butter until browned. Set aside.",
+            "In the same pan, cook garlic, ginger and cumin 30 seconds. Add tomato puree and simmer 15 minutes.",
+            "Return chicken to the sauce. Add cream and sugar. Simmer 10 minutes.",
+            "Crush kasuri methi between your palms and stir in. Serve with naan or basmati rice."
+          ],
+          "tip": "Kasuri methi (dried fenugreek leaves) is the secret restaurant flavour — don't skip it."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Salads & Light",
+      "icon": "chick19_sym_4",
+      "background": "chick19_back_4",
+      "accentColor": "#558B2F",
+      "recipes": [
+        {
+          "id": 16,
+          "categoryId": 4,
+          "title": "Grilled Chicken Caesar Salad",
+          "prepMins": 15,
+          "cookMins": 15,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["chicken", "salad", "healthy"],
+          "ingredients": [
+            { "name": "chicken breast", "amount": 2, "unit": "whole" },
+            { "name": "romaine lettuce", "amount": 1, "unit": "head" },
+            { "name": "parmesan", "amount": 40, "unit": "g" },
+            { "name": "croutons", "amount": 1, "unit": "cup" },
+            { "name": "Caesar dressing", "amount": 4, "unit": "tbsp" },
+            { "name": "lemon", "amount": 0.5, "unit": "whole" },
+            { "name": "olive oil", "amount": 1, "unit": "tbsp" }
+          ],
+          "steps": [
+            "Season chicken with salt, pepper and oil. Grill 6-7 minutes per side. Slice.",
+            "Chop romaine into bite-sized pieces. Place in a large bowl.",
+            "Add croutons and shaved parmesan.",
+            "Toss with Caesar dressing and a squeeze of lemon.",
+            "Top with sliced grilled chicken and extra parmesan."
+          ],
+          "tip": "Warm chicken on a cold salad creates the best texture contrast."
+        },
+        {
+          "id": 17,
+          "categoryId": 4,
+          "title": "Egg Salad Sandwich",
+          "prepMins": 10,
+          "cookMins": 12,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["eggs", "salad", "lunch"],
+          "ingredients": [
+            { "name": "eggs", "amount": 6, "unit": "whole" },
+            { "name": "mayonnaise", "amount": 3, "unit": "tbsp" },
+            { "name": "Dijon mustard", "amount": 1, "unit": "tsp" },
+            { "name": "celery", "amount": 1, "unit": "stalk" },
+            { "name": "chives", "amount": 1, "unit": "tbsp" },
+            { "name": "bread", "amount": 4, "unit": "slices" },
+            { "name": "lettuce", "amount": 2, "unit": "leaves" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" }
+          ],
+          "steps": [
+            "Hard boil eggs: place in cold water, bring to boil, cover and remove from heat. Sit 12 minutes. Cool in ice water.",
+            "Peel and chop eggs (not too fine — you want texture).",
+            "Mix with mayo, mustard, diced celery, chives, salt and pepper.",
+            "Toast bread if desired. Line with lettuce.",
+            "Pile egg salad onto bread. Top and slice diagonally."
+          ],
+          "tip": "Ice bath after boiling prevents the green ring around the yolk."
+        },
+        {
+          "id": 18,
+          "categoryId": 4,
+          "title": "Asian Chicken Lettuce Wraps",
+          "prepMins": 15,
+          "cookMins": 10,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["chicken", "salad", "asian"],
+          "ingredients": [
+            { "name": "ground chicken", "amount": 500, "unit": "g" },
+            { "name": "butter lettuce", "amount": 1, "unit": "head" },
+            { "name": "water chestnuts", "amount": 100, "unit": "g" },
+            { "name": "green onions", "amount": 3, "unit": "whole" },
+            { "name": "soy sauce", "amount": 2, "unit": "tbsp" },
+            { "name": "hoisin sauce", "amount": 2, "unit": "tbsp" },
+            { "name": "sesame oil", "amount": 1, "unit": "tsp" },
+            { "name": "garlic", "amount": 2, "unit": "cloves" },
+            { "name": "ginger", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Cook ground chicken in a hot pan, breaking it apart until browned.",
+            "Add minced garlic, ginger, diced water chestnuts and green onions. Cook 2 minutes.",
+            "Stir in soy sauce, hoisin and sesame oil.",
+            "Separate butter lettuce leaves carefully to form cups.",
+            "Spoon chicken filling into each leaf cup. Top with extra green onions."
+          ],
+          "tip": "Butter lettuce is ideal — the cups are naturally shaped to hold the filling."
+        },
+        {
+          "id": 19,
+          "categoryId": 4,
+          "title": "Devilled Eggs",
+          "prepMins": 15,
+          "cookMins": 12,
+          "baseServings": 6,
+          "difficulty": "Easy",
+          "tags": ["eggs", "appetizer", "party"],
+          "ingredients": [
+            { "name": "eggs", "amount": 6, "unit": "whole" },
+            { "name": "mayonnaise", "amount": 3, "unit": "tbsp" },
+            { "name": "Dijon mustard", "amount": 1, "unit": "tsp" },
+            { "name": "white vinegar", "amount": 1, "unit": "tsp" },
+            { "name": "paprika", "amount": 1, "unit": "pinch" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "chives", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Hard boil eggs (same method as egg salad). Cool, peel and halve lengthwise.",
+            "Scoop yolks into a bowl. Mash until smooth.",
+            "Mix yolks with mayo, mustard, vinegar and salt until creamy.",
+            "Pipe or spoon the filling back into the egg white halves.",
+            "Dust with paprika and garnish with chives. Chill until serving."
+          ],
+          "tip": "A piping bag makes them look professional, but a zip bag with a corner snipped works too."
+        },
+        {
+          "id": 20,
+          "categoryId": 4,
+          "title": "Chicken & Avocado Salad",
+          "prepMins": 10,
+          "cookMins": 15,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["chicken", "salad", "healthy"],
+          "ingredients": [
+            { "name": "chicken breast", "amount": 1, "unit": "whole" },
+            { "name": "avocado", "amount": 1, "unit": "whole" },
+            { "name": "cherry tomatoes", "amount": 150, "unit": "g" },
+            { "name": "mixed greens", "amount": 100, "unit": "g" },
+            { "name": "lime", "amount": 1, "unit": "whole" },
+            { "name": "olive oil", "amount": 2, "unit": "tbsp" },
+            { "name": "cilantro", "amount": 1, "unit": "handful" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" }
+          ],
+          "steps": [
+            "Season and grill chicken breast. Slice when cool.",
+            "Arrange mixed greens on a plate. Top with sliced chicken.",
+            "Add halved cherry tomatoes and sliced avocado.",
+            "Whisk lime juice, olive oil, salt, pepper and chopped cilantro.",
+            "Drizzle dressing over the salad and serve immediately."
+          ],
+          "tip": "Add avocado at the last moment to prevent browning."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Baking with Eggs",
+      "icon": "chick19_sym_5",
+      "background": "chick19_back_4",
+      "accentColor": "#AD1457",
+      "recipes": [
+        {
+          "id": 21,
+          "categoryId": 5,
+          "title": "Classic Quiche Lorraine",
+          "prepMins": 20,
+          "cookMins": 45,
+          "baseServings": 6,
+          "difficulty": "Medium",
+          "tags": ["eggs", "baking", "french"],
+          "ingredients": [
+            { "name": "pie crust", "amount": 1, "unit": "whole" },
+            { "name": "eggs", "amount": 4, "unit": "whole" },
+            { "name": "cream", "amount": 200, "unit": "ml" },
+            { "name": "bacon", "amount": 150, "unit": "g" },
+            { "name": "gruyère cheese", "amount": 100, "unit": "g" },
+            { "name": "nutmeg", "amount": 1, "unit": "pinch" },
+            { "name": "salt", "amount": 0.5, "unit": "tsp" },
+            { "name": "pepper", "amount": 0.5, "unit": "tsp" }
+          ],
+          "steps": [
+            "Blind bake pie crust at 190°C (375°F) for 12 minutes. Set aside.",
+            "Fry bacon until crispy. Drain and crumble.",
+            "Whisk eggs, cream, nutmeg, salt and pepper.",
+            "Scatter bacon and grated gruyère into the crust. Pour egg custard over the top.",
+            "Bake 30-35 minutes until the centre is just set. Cool 10 minutes before slicing."
+          ],
+          "tip": "Blind baking prevents a soggy bottom crust."
+        },
+        {
+          "id": 22,
+          "categoryId": 5,
+          "title": "Chocolate Custard Tart",
+          "prepMins": 20,
+          "cookMins": 35,
+          "baseServings": 8,
+          "difficulty": "Medium",
+          "tags": ["eggs", "dessert", "baking"],
+          "ingredients": [
+            { "name": "tart shell", "amount": 1, "unit": "whole" },
+            { "name": "dark chocolate", "amount": 200, "unit": "g" },
+            { "name": "eggs", "amount": 3, "unit": "whole" },
+            { "name": "egg yolks", "amount": 2, "unit": "whole" },
+            { "name": "cream", "amount": 300, "unit": "ml" },
+            { "name": "sugar", "amount": 50, "unit": "g" },
+            { "name": "vanilla extract", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Preheat oven to 160°C (325°F).",
+            "Melt chocolate gently over a double boiler. Cool slightly.",
+            "Whisk eggs, yolks, sugar and vanilla. Heat cream until just simmering.",
+            "Pour cream into chocolate. Temper in the egg mixture slowly, whisking constantly.",
+            "Pour into tart shell. Bake 25-30 minutes. The centre should still have a slight wobble."
+          ],
+          "tip": "Tempering is critical — add eggs slowly or you'll get scrambled eggs in your tart."
+        },
+        {
+          "id": 23,
+          "categoryId": 5,
+          "title": "Classic Vanilla Custard",
+          "prepMins": 10,
+          "cookMins": 20,
+          "baseServings": 4,
+          "difficulty": "Medium",
+          "tags": ["eggs", "dessert", "custard"],
+          "ingredients": [
+            { "name": "egg yolks", "amount": 5, "unit": "whole" },
+            { "name": "cream", "amount": 300, "unit": "ml" },
+            { "name": "milk", "amount": 200, "unit": "ml" },
+            { "name": "sugar", "amount": 60, "unit": "g" },
+            { "name": "vanilla bean", "amount": 1, "unit": "whole" },
+            { "name": "cornflour", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Split vanilla bean. Scrape seeds into cream and milk. Heat until just simmering.",
+            "Whisk egg yolks, sugar and cornflour until pale.",
+            "Slowly pour hot cream into eggs while whisking constantly.",
+            "Return mixture to the pan. Stir over low heat until it coats the back of a spoon.",
+            "Strain through a fine sieve. Serve warm or chill with plastic film touching the surface."
+          ],
+          "tip": "Never let custard boil — it will curdle. Low and patient heat is the key."
+        },
+        {
+          "id": 24,
+          "categoryId": 5,
+          "title": "French Crêpes",
+          "prepMins": 10,
+          "cookMins": 20,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["eggs", "baking", "french"],
+          "ingredients": [
+            { "name": "eggs", "amount": 3, "unit": "whole" },
+            { "name": "flour", "amount": 150, "unit": "g" },
+            { "name": "milk", "amount": 300, "unit": "ml" },
+            { "name": "butter", "amount": 2, "unit": "tbsp" },
+            { "name": "sugar", "amount": 2, "unit": "tbsp" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "vanilla extract", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Blend eggs, flour, milk, melted butter, sugar, salt and vanilla until smooth.",
+            "Rest batter 30 minutes (this relaxes the gluten).",
+            "Heat a lightly buttered non-stick pan. Pour a small ladle of batter and swirl to coat.",
+            "Cook 1-2 minutes until edges lift. Flip and cook 30 seconds more.",
+            "Fill with Nutella, jam, fruit or savoury fillings. Fold and serve."
+          ],
+          "tip": "The first crêpe is always a test — don't worry about it, it's the chef's treat."
+        },
+        {
+          "id": 25,
+          "categoryId": 5,
+          "title": "Egg Fried Rice",
+          "prepMins": 5,
+          "cookMins": 10,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["eggs", "rice", "quick"],
+          "ingredients": [
+            { "name": "cooked rice", "amount": 300, "unit": "g" },
+            { "name": "eggs", "amount": 2, "unit": "whole" },
+            { "name": "soy sauce", "amount": 2, "unit": "tbsp" },
+            { "name": "sesame oil", "amount": 1, "unit": "tsp" },
+            { "name": "green onions", "amount": 2, "unit": "whole" },
+            { "name": "vegetable oil", "amount": 2, "unit": "tbsp" },
+            { "name": "peas", "amount": 50, "unit": "g" }
+          ],
+          "steps": [
+            "Use cold day-old rice — freshly cooked rice is too moist.",
+            "Scramble eggs in a hot wok. Break into chunks. Set aside.",
+            "Stir-fry cold rice in hot oil 3 minutes until grains are separated and slightly crispy.",
+            "Add soy sauce, sesame oil, peas and scrambled eggs. Toss everything together.",
+            "Garnish with sliced green onions and serve immediately."
+          ],
+          "tip": "Cold leftover rice is non-negotiable. Fresh rice will steam and turn mushy."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "International",
+      "icon": "chick19_sym_6",
+      "background": "chick19_back_5",
+      "accentColor": "#1565C0",
+      "recipes": [
+        {
+          "id": 26,
+          "categoryId": 6,
+          "title": "Chicken Fajitas",
+          "prepMins": 15,
+          "cookMins": 15,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["chicken", "mexican", "grilled"],
+          "ingredients": [
+            { "name": "chicken breast", "amount": 500, "unit": "g" },
+            { "name": "bell peppers", "amount": 3, "unit": "whole" },
+            { "name": "onion", "amount": 1, "unit": "whole" },
+            { "name": "fajita seasoning", "amount": 2, "unit": "tbsp" },
+            { "name": "flour tortillas", "amount": 8, "unit": "whole" },
+            { "name": "lime", "amount": 1, "unit": "whole" },
+            { "name": "sour cream", "amount": 4, "unit": "tbsp" },
+            { "name": "cilantro", "amount": 1, "unit": "handful" }
+          ],
+          "steps": [
+            "Slice chicken, bell peppers and onion into strips.",
+            "Coat chicken strips with fajita seasoning.",
+            "Sear chicken in a very hot pan or grill 5-6 minutes. Set aside.",
+            "Sauté peppers and onion until charred but still crisp. Return chicken to the pan.",
+            "Serve sizzling in warm tortillas with lime, sour cream and cilantro."
+          ],
+          "tip": "High heat = char = flavour. Don't crowd the pan."
+        },
+        {
+          "id": 27,
+          "categoryId": 6,
+          "title": "Chicken Teriyaki",
+          "prepMins": 10,
+          "cookMins": 20,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["chicken", "japanese", "glazed"],
+          "ingredients": [
+            { "name": "chicken thighs", "amount": 6, "unit": "whole" },
+            { "name": "soy sauce", "amount": 4, "unit": "tbsp" },
+            { "name": "mirin", "amount": 3, "unit": "tbsp" },
+            { "name": "sake", "amount": 2, "unit": "tbsp" },
+            { "name": "sugar", "amount": 1, "unit": "tbsp" },
+            { "name": "ginger", "amount": 1, "unit": "tsp" },
+            { "name": "sesame seeds", "amount": 1, "unit": "tbsp" }
+          ],
+          "steps": [
+            "Mix soy sauce, mirin, sake, sugar and grated ginger for the teriyaki glaze.",
+            "Season chicken thighs with salt and pepper. Pan-fry skin-side down until crispy.",
+            "Flip and cook 5 more minutes until cooked through.",
+            "Pour teriyaki glaze into the pan. Cook until it thickens and coats the chicken.",
+            "Slice and serve over steamed rice with sesame seeds and the reduced glaze."
+          ],
+          "tip": "Real mirin and sake make a huge difference — skip the substitutes if you can."
+        },
+        {
+          "id": 28,
+          "categoryId": 6,
+          "title": "Spanish Tortilla Española",
+          "prepMins": 15,
+          "cookMins": 30,
+          "baseServings": 6,
+          "difficulty": "Medium",
+          "tags": ["eggs", "spanish", "potato"],
+          "ingredients": [
+            { "name": "eggs", "amount": 8, "unit": "whole" },
+            { "name": "potatoes", "amount": 4, "unit": "whole" },
+            { "name": "onion", "amount": 1, "unit": "whole" },
+            { "name": "olive oil", "amount": 200, "unit": "ml" },
+            { "name": "salt", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Peel and thinly slice potatoes and onion.",
+            "Slowly poach potatoes and onion in olive oil over medium-low heat until tender (not browned), about 15 minutes.",
+            "Beat eggs in a large bowl. Drain potatoes and onion and fold into the eggs. Rest 10 minutes.",
+            "Pour mixture into a lightly oiled non-stick pan. Cook over low heat until edges are set.",
+            "Flip using a plate. Slide back into the pan. Cook 3 more minutes. It should be slightly moist in the centre."
+          ],
+          "tip": "The flip is intimidating — but a plate bigger than your pan makes it easy. Commit and commit fast."
+        },
+        {
+          "id": 29,
+          "categoryId": 6,
+          "title": "Shakshuka",
+          "prepMins": 10,
+          "cookMins": 25,
+          "baseServings": 4,
+          "difficulty": "Easy",
+          "tags": ["eggs", "middle-eastern", "breakfast"],
+          "ingredients": [
+            { "name": "eggs", "amount": 6, "unit": "whole" },
+            { "name": "canned tomatoes", "amount": 800, "unit": "g" },
+            { "name": "onion", "amount": 1, "unit": "whole" },
+            { "name": "bell pepper", "amount": 1, "unit": "whole" },
+            { "name": "garlic", "amount": 3, "unit": "cloves" },
+            { "name": "cumin", "amount": 1, "unit": "tsp" },
+            { "name": "paprika", "amount": 1, "unit": "tsp" },
+            { "name": "chilli flakes", "amount": 0.5, "unit": "tsp" },
+            { "name": "feta cheese", "amount": 60, "unit": "g" },
+            { "name": "cilantro", "amount": 1, "unit": "handful" }
+          ],
+          "steps": [
+            "Sauté diced onion and bell pepper until soft. Add garlic and spices.",
+            "Pour in canned tomatoes. Simmer 15 minutes until thickened.",
+            "Make wells in the sauce with a spoon. Crack an egg into each well.",
+            "Cover and cook 5-8 minutes until egg whites are set but yolks are still runny.",
+            "Crumble feta on top, garnish with cilantro and serve with crusty bread."
+          ],
+          "tip": "The sauce should be thick — if it's watery, the eggs will sink."
+        },
+        {
+          "id": 30,
+          "categoryId": 6,
+          "title": "Chicken Katsu",
+          "prepMins": 15,
+          "cookMins": 10,
+          "baseServings": 2,
+          "difficulty": "Medium",
+          "tags": ["chicken", "japanese", "fried"],
+          "ingredients": [
+            { "name": "chicken breast", "amount": 2, "unit": "whole" },
+            { "name": "flour", "amount": 50, "unit": "g" },
+            { "name": "eggs", "amount": 2, "unit": "whole" },
+            { "name": "panko breadcrumbs", "amount": 100, "unit": "g" },
+            { "name": "tonkatsu sauce", "amount": 4, "unit": "tbsp" },
+            { "name": "vegetable oil", "amount": 2, "unit": "cup" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" }
+          ],
+          "steps": [
+            "Pound chicken breasts to even thickness. Season with salt and pepper.",
+            "Set up a breading station: flour, beaten eggs and panko.",
+            "Coat each breast in flour, then egg, then press panko on firmly.",
+            "Deep fry at 170°C (340°F) for 5-6 minutes until golden brown. Drain on a rack.",
+            "Rest 2 minutes, slice into strips and serve with tonkatsu sauce and shredded cabbage."
+          ],
+          "tip": "Press the panko firmly — loose crumbs fall off in the oil and burn."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Quick & Easy",
+      "icon": "chick19_sym_7",
+      "background": "chick19_back_5",
+      "accentColor": "#00695C",
+      "recipes": [
+        {
+          "id": 31,
+          "categoryId": 7,
+          "title": "5-Minute Microwave Scrambled Eggs",
+          "prepMins": 2,
+          "cookMins": 3,
+          "baseServings": 1,
+          "difficulty": "Easy",
+          "tags": ["eggs", "microwave", "quick"],
+          "ingredients": [
+            { "name": "eggs", "amount": 2, "unit": "whole" },
+            { "name": "milk", "amount": 1, "unit": "tbsp" },
+            { "name": "butter", "amount": 1, "unit": "tsp" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" }
+          ],
+          "steps": [
+            "Grease a microwave-safe mug or bowl with butter.",
+            "Crack in eggs. Add milk, salt and pepper. Whisk with a fork.",
+            "Microwave on high for 45 seconds. Stir.",
+            "Microwave another 30-45 seconds until just set.",
+            "Let stand 30 seconds — residual heat finishes the cooking."
+          ],
+          "tip": "Shorter bursts and stirring prevent rubbery microwave eggs."
+        },
+        {
+          "id": 32,
+          "categoryId": 7,
+          "title": "Chicken Quesadilla",
+          "prepMins": 5,
+          "cookMins": 8,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["chicken", "quick", "mexican"],
+          "ingredients": [
+            { "name": "cooked chicken", "amount": 200, "unit": "g" },
+            { "name": "flour tortillas", "amount": 2, "unit": "whole" },
+            { "name": "cheddar cheese", "amount": 100, "unit": "g" },
+            { "name": "salsa", "amount": 4, "unit": "tbsp" },
+            { "name": "sour cream", "amount": 2, "unit": "tbsp" }
+          ],
+          "steps": [
+            "Shred cooked chicken. Grate cheese.",
+            "Place one tortilla in a pan. Layer cheese, chicken and salsa.",
+            "Top with second tortilla. Cook over medium heat until bottom is golden.",
+            "Flip carefully. Cook until second side is golden and cheese is melted.",
+            "Cut into wedges. Serve with sour cream and extra salsa."
+          ],
+          "tip": "Great use for leftover roast chicken or rotisserie chicken."
+        },
+        {
+          "id": 33,
+          "categoryId": 7,
+          "title": "Egg on Toast with Avocado",
+          "prepMins": 3,
+          "cookMins": 5,
+          "baseServings": 1,
+          "difficulty": "Easy",
+          "tags": ["eggs", "toast", "quick"],
+          "ingredients": [
+            { "name": "eggs", "amount": 2, "unit": "whole" },
+            { "name": "bread", "amount": 2, "unit": "slices" },
+            { "name": "avocado", "amount": 0.5, "unit": "whole" },
+            { "name": "chilli flakes", "amount": 1, "unit": "pinch" },
+            { "name": "salt", "amount": 1, "unit": "pinch" },
+            { "name": "pepper", "amount": 1, "unit": "pinch" },
+            { "name": "lemon juice", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Toast bread to your preference.",
+            "Mash avocado with lemon juice, salt and pepper.",
+            "Fry or poach eggs to your liking.",
+            "Spread avocado mash on toast. Top with the egg.",
+            "Sprinkle with chilli flakes and crack extra pepper on top."
+          ],
+          "tip": "A runny yolk becomes the sauce — that's the magic of this simple dish."
+        },
+        {
+          "id": 34,
+          "categoryId": 7,
+          "title": "Chicken Stir-Fry",
+          "prepMins": 10,
+          "cookMins": 10,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["chicken", "stir-fry", "quick"],
+          "ingredients": [
+            { "name": "chicken breast", "amount": 300, "unit": "g" },
+            { "name": "mixed vegetables", "amount": 250, "unit": "g" },
+            { "name": "soy sauce", "amount": 2, "unit": "tbsp" },
+            { "name": "oyster sauce", "amount": 1, "unit": "tbsp" },
+            { "name": "garlic", "amount": 2, "unit": "cloves" },
+            { "name": "ginger", "amount": 1, "unit": "tsp" },
+            { "name": "cornflour", "amount": 1, "unit": "tsp" },
+            { "name": "sesame oil", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Slice chicken thinly. Toss with cornflour.",
+            "Stir-fry chicken in hot oil 3-4 minutes until golden. Set aside.",
+            "Flash-fry vegetables, garlic and ginger 2 minutes (they should stay crisp).",
+            "Return chicken. Add soy sauce, oyster sauce and sesame oil. Toss everything.",
+            "Serve immediately over steamed rice or noodles."
+          ],
+          "tip": "Have everything prepped before you turn on the heat — stir-frying is fast."
+        },
+        {
+          "id": 35,
+          "categoryId": 7,
+          "title": "One-Pan Egg Pasta",
+          "prepMins": 5,
+          "cookMins": 15,
+          "baseServings": 2,
+          "difficulty": "Easy",
+          "tags": ["eggs", "pasta", "quick"],
+          "ingredients": [
+            { "name": "spaghetti", "amount": 200, "unit": "g" },
+            { "name": "eggs", "amount": 2, "unit": "whole" },
+            { "name": "parmesan", "amount": 50, "unit": "g" },
+            { "name": "garlic", "amount": 2, "unit": "cloves" },
+            { "name": "butter", "amount": 2, "unit": "tbsp" },
+            { "name": "black pepper", "amount": 1, "unit": "tsp" },
+            { "name": "salt", "amount": 1, "unit": "tsp" }
+          ],
+          "steps": [
+            "Cook spaghetti in salted boiling water. Reserve 1 cup pasta water before draining.",
+            "Whisk eggs, grated parmesan and pepper in a bowl.",
+            "Melt butter in a large pan. Sauté garlic 30 seconds.",
+            "Add drained pasta. Remove from heat. Pour egg mixture over and toss quickly.",
+            "Add pasta water a splash at a time until creamy. The residual heat cooks the eggs — not the pan."
+          ],
+          "tip": "Off the heat is the golden rule. Pan heat = scrambled eggs in your pasta."
+        }
+      ]
+    }
+  ]
+}
