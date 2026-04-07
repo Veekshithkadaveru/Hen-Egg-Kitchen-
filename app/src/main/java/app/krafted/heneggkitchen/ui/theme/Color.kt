@@ -2,10 +2,17 @@ package app.krafted.heneggkitchen.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val WarmAmber = Color(0xFFF9A825)
+val WarmBrown = Color(0xFF795548)
+val WarmTerracotta = Color(0xFFBF6B3F)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val WarmAmberLight = Color(0xFFFFD54F)
+val WarmBrownLight = Color(0xFFA1887F)
+val WarmTerracottaLight = Color(0xFFE09B7B)
+
+val WarmCream = Color(0xFFFFF8F0)
+val WarmOffWhite = Color(0xFFFFFDF7)
+val DarkBrown = Color(0xFF3E2723)
+
+val DarkSurface = Color(0xFF2C1E1A)
+val DarkBackground = Color(0xFF1E1210)

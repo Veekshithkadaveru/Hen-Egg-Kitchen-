@@ -3,9 +3,14 @@ package app.krafted.heneggkitchen.ui.navigation
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import app.krafted.heneggkitchen.HenEggKitchenApp
+import app.krafted.heneggkitchen.ui.HomeScreen
+import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 
 @Composable
 fun NavGraph(
@@ -17,10 +22,14 @@ fun NavGraph(
         startDestination = startDestination
     ) {
         composable(Screen.Splash.route) {
-            // Placeholder for SplashScreen
         }
         composable(Screen.Home.route) {
-            // Placeholder for HomeScreen
+            val app = LocalContext.current.applicationContext as HenEggKitchenApp
+            val viewModel = remember { HomeViewModel(app.recipeRepository) }
+            HomeScreen(
+                viewModel = viewModel,
+                onNavigate = { route -> navController.navigate(route) }
+            )
         }
         composable(
             Screen.Category.route,
@@ -49,7 +58,6 @@ fun NavGraph(
                 )
             }
         ) {
-            // Placeholder for CategoryScreen
         }
         composable(
             Screen.RecipeDetail.route,
@@ -78,7 +86,6 @@ fun NavGraph(
                 )
             }
         ) {
-            // Placeholder for RecipeDetailScreen
         }
         composable(
             Screen.CookingMode.route,
@@ -95,7 +102,6 @@ fun NavGraph(
                 )
             }
         ) {
-            // Placeholder for CookingModeScreen
         }
         composable(
             Screen.Bookmarks.route,
@@ -124,7 +130,6 @@ fun NavGraph(
                 )
             }
         ) {
-            // Placeholder for BookmarksScreen
         }
         composable(
             Screen.Search.route,
@@ -141,7 +146,6 @@ fun NavGraph(
                 )
             }
         ) {
-            // Placeholder for SearchScreen
         }
     }
 }
