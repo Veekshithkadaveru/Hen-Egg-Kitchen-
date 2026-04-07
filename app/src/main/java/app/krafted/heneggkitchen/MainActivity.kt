@@ -15,19 +15,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import app.krafted.heneggkitchen.data.RecipeRepository
-import app.krafted.heneggkitchen.data.db.AppDatabase
 import app.krafted.heneggkitchen.ui.navigation.NavGraph
 import app.krafted.heneggkitchen.ui.navigation.Screen
 import app.krafted.heneggkitchen.ui.theme.HenEggKitchenTheme
 
 class MainActivity : ComponentActivity() {
+    private val app: HenEggKitchenApp by lazy { application as HenEggKitchenApp }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        val repository = RecipeRepository(this)
-        val database = AppDatabase.getInstance(this)
 
         setContent {
             HenEggKitchenTheme {
@@ -39,9 +36,12 @@ class MainActivity : ComponentActivity() {
                     var startDestination by remember { mutableStateOf<String?>(null) }
 
                     LaunchedEffect(Unit) {
-                        val categories = repository.getCategories()
-                        val totalRecipes = repository.getAllRecipes().size
-                        Log.d("MainActivity", "Loaded ${categories.size} categories, $totalRecipes recipes")
+                        val categories = app.recipeRepository.getCategories()
+                        val totalRecipes = app.recipeRepository.getAllRecipes().size
+                        Log.d(
+                            "MainActivity",
+                            "Loaded ${categories.size} categories, $totalRecipes recipes"
+                        )
 
                         startDestination = Screen.Home.route
                     }
