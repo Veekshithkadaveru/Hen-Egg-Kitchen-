@@ -13,7 +13,9 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import app.krafted.heneggkitchen.ui.CategoryScreen
 import app.krafted.heneggkitchen.ui.HomeScreen
+import app.krafted.heneggkitchen.ui.RecipeDetailScreen
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
+import app.krafted.heneggkitchen.viewmodel.RecipeViewModel
 
 @Composable
 fun NavGraph(
@@ -36,7 +38,7 @@ fun NavGraph(
         }
         composable(
             Screen.Category.route,
-            arguments = listOf(navArgument("categoryId") { type = NavType.StringType }),
+            arguments = listOf(navArgument("categoryId") { type = NavType.IntType }),
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Left,
@@ -62,7 +64,7 @@ fun NavGraph(
                 )
             }
         ) {
-            val categoryId = it.arguments?.getString("categoryId")?.toIntOrNull() ?: return@composable
+            val categoryId = it.arguments?.getInt("categoryId") ?: return@composable
             val app = LocalContext.current.applicationContext as HenEggKitchenApp
             CategoryScreen(
                 categoryId = categoryId,
@@ -73,6 +75,7 @@ fun NavGraph(
         }
         composable(
             Screen.RecipeDetail.route,
+            arguments = listOf(navArgument("recipeId") { type = NavType.IntType }),
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Left,
@@ -97,7 +100,16 @@ fun NavGraph(
                     animationSpec = tween(280)
                 )
             }
-        ) {
+        ) { backStackEntry ->
+            val recipeId = backStackEntry.arguments?.getInt("recipeId") ?: return@composable
+            val app = LocalContext.current.applicationContext as HenEggKitchenApp
+            val viewModel = remember { RecipeViewModel(app.recipeRepository, app.bookmarkDao) }
+            RecipeDetailScreen(
+                viewModel = viewModel,
+                recipeId = recipeId,
+                onBackClick = { navController.popBackStack() },
+                onStartCooking = { navController.navigate(Screen.CookingMode.createRoute(recipeId)) }
+            )
         }
         composable(
             Screen.CookingMode.route,

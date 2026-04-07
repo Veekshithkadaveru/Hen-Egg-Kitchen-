@@ -18,29 +18,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-private val RemoveIcon: ImageVector
-    get() = ImageVector.Builder(
-        name = "Remove",
-        defaultWidth = 24.dp,
-        defaultHeight = 24.dp,
-        viewportWidth = 24f,
-        viewportHeight = 24f
-    ).apply {
-        path {
-            moveTo(7f, 10f)
-            horizontalLineTo(17f)
-            verticalLineTo(14f)
-            horizontalLineTo(7f)
-            verticalLineTo(10f)
-            close()
-        }
-    }.build()
 
 @Composable
 fun ServingAdjuster(
@@ -61,12 +42,13 @@ fun ServingAdjuster(
         FilledIconButton(
             onClick = onDecrement,
             enabled = servings > 1,
-            modifier = Modifier.size(36.dp)
+            modifier = Modifier.size(36.dp),
         ) {
-            Icon(
-                imageVector = RemoveIcon,
-                contentDescription = "Decrease servings",
-                modifier = Modifier.size(18.dp)
+            Text(
+                text = "−",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFFE53935)
             )
         }
 
