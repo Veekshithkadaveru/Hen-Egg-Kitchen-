@@ -9,6 +9,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import app.krafted.heneggkitchen.HenEggKitchenApp
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import app.krafted.heneggkitchen.ui.CategoryScreen
 import app.krafted.heneggkitchen.ui.HomeScreen
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 
@@ -33,6 +36,7 @@ fun NavGraph(
         }
         composable(
             Screen.Category.route,
+            arguments = listOf(navArgument("categoryId") { type = NavType.StringType }),
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Left,
@@ -58,6 +62,14 @@ fun NavGraph(
                 )
             }
         ) {
+            val categoryId = it.arguments?.getString("categoryId")?.toIntOrNull() ?: return@composable
+            val app = LocalContext.current.applicationContext as HenEggKitchenApp
+            CategoryScreen(
+                categoryId = categoryId,
+                repository = app.recipeRepository,
+                onRecipeClick = { recipeId -> navController.navigate(Screen.RecipeDetail.createRoute(recipeId)) },
+                onBackClick = { navController.popBackStack() }
+            )
         }
         composable(
             Screen.RecipeDetail.route,
