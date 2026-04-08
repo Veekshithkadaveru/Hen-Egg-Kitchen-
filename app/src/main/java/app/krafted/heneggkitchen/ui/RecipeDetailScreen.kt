@@ -56,16 +56,19 @@ import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.data.formatAmount
 import app.krafted.heneggkitchen.data.models.Ingredient
 import app.krafted.heneggkitchen.ui.components.ServingAdjuster
+import app.krafted.heneggkitchen.ui.theme.TextPrimary
+import app.krafted.heneggkitchen.ui.theme.TextSecondary
+import app.krafted.heneggkitchen.ui.theme.WarmAmber
+import app.krafted.heneggkitchen.ui.theme.WarmCream
+import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import app.krafted.heneggkitchen.viewmodel.RecipeViewModel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private val SurfaceColor = Color(0xFFFFFDF7)
-private val TextPrimary = Color(0xFF1E2238)
-private val TextSecondary = Color(0xFF6B7280)
-private val AccentAmber = Color(0xFFF9A825)
-private val BackgroundWarm = Color(0xFFFFF8F0)
+private val SurfaceColor = WarmOffWhite
+private val AccentAmber = WarmAmber
+private val BackgroundWarm = WarmCream
 private val StepNumberBg = Color(0xFFF3E8D0)
 
 @Composable
@@ -78,15 +81,14 @@ fun RecipeDetailScreen(
     val state by viewModel.state.collectAsState()
     val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
     val scrollState = rememberScrollState()
+    val contentAlpha = remember { Animatable(0f) }
+    val contentTranslationY = remember { Animatable(40f) }
 
     LaunchedEffect(recipeId) {
         viewModel.loadRecipe(recipeId)
     }
 
     val recipe = state.recipe ?: return
-
-    val contentAlpha = remember { Animatable(0f) }
-    val contentTranslationY = remember { Animatable(40f) }
 
     LaunchedEffect(recipe) {
         delay(150)

@@ -80,14 +80,16 @@ import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.R
 import app.krafted.heneggkitchen.data.models.RecipeCategory
 import app.krafted.heneggkitchen.ui.navigation.Screen
+import app.krafted.heneggkitchen.ui.theme.TextPrimary
+import app.krafted.heneggkitchen.ui.theme.TextSecondaryLight
+import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
-private val SurfaceColor = Color(0xFFFFFDF7)
-private val TextPrimary = Color(0xFF1E2238)
-private val TextSecondary = Color(0xFFE2E8F0)
+private val SurfaceColor = WarmOffWhite
+private val TextSecondary = TextSecondaryLight
 private val SearchHint = Color(0xFF9CA3AF)
 private val CategoryIconBackgroundExceptions = setOf("Baking with Eggs", "Quick & Easy")
 private const val CategoryIconWhiteThreshold = 238

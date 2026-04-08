@@ -59,13 +59,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.data.RecipeRepository
 import app.krafted.heneggkitchen.data.models.Recipe
+import app.krafted.heneggkitchen.ui.theme.TextPrimary
+import app.krafted.heneggkitchen.ui.theme.TextSecondaryLight
+import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private val SurfaceColor = Color(0xFFFFFDF7)
-private val TextPrimary = Color(0xFF1E2238)
-private val TextSecondary = Color(0xFFE2E8F0)
+private val SurfaceColor = WarmOffWhite
+private val TextSecondary = TextSecondaryLight
 
 @Composable
 fun CategoryScreen(

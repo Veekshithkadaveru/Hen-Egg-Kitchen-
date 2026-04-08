@@ -11,9 +11,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class CookingUiState(
-    val recipe: Recipe? = null,
-    val currentStep: Int = 0,
-    val totalSteps: Int = 0
+    val recipe: Recipe? = null
 )
 
 class CookingViewModel(
@@ -25,33 +23,7 @@ class CookingViewModel(
     fun loadRecipe(recipeId: Int) {
         viewModelScope.launch {
             val recipe = repository.getRecipeById(recipeId) ?: return@launch
-            _state.update {
-                it.copy(
-                    recipe = recipe,
-                    currentStep = 0,
-                    totalSteps = recipe.steps.size
-                )
-            }
-        }
-    }
-
-    fun nextStep() {
-        _state.update {
-            if (it.currentStep < it.totalSteps - 1) {
-                it.copy(currentStep = it.currentStep + 1)
-            } else {
-                it
-            }
-        }
-    }
-
-    fun previousStep() {
-        _state.update {
-            if (it.currentStep > 0) {
-                it.copy(currentStep = it.currentStep - 1)
-            } else {
-                it
-            }
+            _state.update { it.copy(recipe = recipe) }
         }
     }
 }

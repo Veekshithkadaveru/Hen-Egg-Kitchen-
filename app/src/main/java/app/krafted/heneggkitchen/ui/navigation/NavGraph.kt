@@ -12,8 +12,10 @@ import app.krafted.heneggkitchen.HenEggKitchenApp
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import app.krafted.heneggkitchen.ui.CategoryScreen
+import app.krafted.heneggkitchen.ui.CookingModeScreen
 import app.krafted.heneggkitchen.ui.HomeScreen
 import app.krafted.heneggkitchen.ui.RecipeDetailScreen
+import app.krafted.heneggkitchen.viewmodel.CookingViewModel
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 import app.krafted.heneggkitchen.viewmodel.RecipeViewModel
 
@@ -113,6 +115,7 @@ fun NavGraph(
         }
         composable(
             Screen.CookingMode.route,
+            arguments = listOf(navArgument("recipeId") { type = NavType.IntType }),
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Up,
@@ -125,7 +128,15 @@ fun NavGraph(
                     animationSpec = tween(280)
                 )
             }
-        ) {
+        ) { backStackEntry ->
+            val recipeId = backStackEntry.arguments?.getInt("recipeId") ?: return@composable
+            val app = LocalContext.current.applicationContext as HenEggKitchenApp
+            val viewModel = remember { CookingViewModel(app.recipeRepository) }
+            CookingModeScreen(
+                viewModel = viewModel,
+                recipeId = recipeId,
+                onBackClick = { navController.popBackStack() }
+            )
         }
         composable(
             Screen.Bookmarks.route,

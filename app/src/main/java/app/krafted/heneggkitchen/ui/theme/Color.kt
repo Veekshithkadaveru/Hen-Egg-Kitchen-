@@ -16,3 +16,7 @@ val DarkBrown = Color(0xFF3E2723)
 
 val DarkSurface = Color(0xFF2C1E1A)
 val DarkBackground = Color(0xFF1E1210)
+
+val TextPrimary = Color(0xFF1E2238)
+val TextSecondary = Color(0xFF6B7280)
+val TextSecondaryLight = Color(0xFFE2E8F0)
