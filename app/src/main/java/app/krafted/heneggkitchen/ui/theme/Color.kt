@@ -20,3 +20,8 @@ val DarkBackground = Color(0xFF1E1210)
 val TextPrimary = Color(0xFF1E2238)
 val TextSecondary = Color(0xFF6B7280)
 val TextSecondaryLight = Color(0xFFE2E8F0)
+
+val StepNumberBg = Color(0xFFF3E8D0)
+val DetailPillBrown = Color(0xFF5D4037)
+val SearchHintGray = Color(0xFF9CA3AF)
+val FallbackAccent = Color(0xFFE0E0E0)

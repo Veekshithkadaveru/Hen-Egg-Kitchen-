@@ -67,6 +67,9 @@ import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.data.formatAmount
 import app.krafted.heneggkitchen.data.models.Ingredient
 import app.krafted.heneggkitchen.ui.components.ServingAdjuster
+import app.krafted.heneggkitchen.ui.theme.DarkBrown
+import app.krafted.heneggkitchen.ui.theme.DetailPillBrown
+import app.krafted.heneggkitchen.ui.theme.StepNumberBg
 import app.krafted.heneggkitchen.ui.theme.TextPrimary
 import app.krafted.heneggkitchen.ui.theme.TextSecondary
 import app.krafted.heneggkitchen.ui.theme.WarmAmber
@@ -81,7 +84,6 @@ import kotlinx.coroutines.launch
 private val SurfaceColor = WarmOffWhite
 private val AccentAmber = WarmAmber
 private val BackgroundWarm = WarmCream
-private val StepNumberBg = Color(0xFFF3E8D0)
 
 @Composable
 fun RecipeDetailScreen(
@@ -162,9 +164,9 @@ fun RecipeDetailScreen(
                     .background(
                         Brush.verticalGradient(
                             colorStops = arrayOf(
-                                0.0f to Color.Black.copy(alpha = 0.7f),
-                                0.12f to Color.Black.copy(alpha = 0.55f),
-                                0.25f to Color(0xFF3E2723).copy(alpha = 0.3f),
+                                0.0f to Color.Black.copy(alpha = 0.3f),
+                                0.12f to Color.Black.copy(alpha = 0.15f),
+                                0.25f to DarkBrown.copy(alpha = 0.1f),
                                 0.4f to BackgroundWarm.copy(alpha = 0.85f),
                                 0.55f to BackgroundWarm.copy(alpha = 0.97f),
                                 1.0f to BackgroundWarm
@@ -407,7 +409,7 @@ private fun DetailPill(text: String) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
-            .background(Color(0xFF5D4037))
+            .background(DetailPillBrown)
             .padding(horizontal = 10.dp, vertical = 5.dp)
     ) {
         Text(

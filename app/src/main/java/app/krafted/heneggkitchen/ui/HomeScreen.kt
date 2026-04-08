@@ -75,15 +75,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.R
 import app.krafted.heneggkitchen.data.models.RecipeCategory
 import app.krafted.heneggkitchen.ui.navigation.Screen
+import app.krafted.heneggkitchen.ui.theme.DarkBrown
+import app.krafted.heneggkitchen.ui.theme.FallbackAccent
+import app.krafted.heneggkitchen.ui.theme.SearchHintGray
 import app.krafted.heneggkitchen.ui.theme.TextPrimary
 import app.krafted.heneggkitchen.ui.theme.TextSecondaryLight
 import app.krafted.heneggkitchen.ui.theme.WarmAmber
+import app.krafted.heneggkitchen.ui.theme.WarmCream
 import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 import kotlinx.coroutines.delay
@@ -92,7 +95,6 @@ import java.util.Calendar
 
 private val SurfaceColor = WarmOffWhite
 private val TextSecondary = TextSecondaryLight
-private val SearchHint = Color(0xFF9CA3AF)
 private val CategoryIconBackgroundExceptions = setOf("Baking with Eggs", "Quick & Easy")
 private const val CategoryIconWhiteThreshold = 238
 private const val TrimmedCategoryIconScale = 1.25f
@@ -142,10 +144,10 @@ fun HomeScreen(
                         colorStops = arrayOf(
                             0.0f to Color.Black.copy(alpha = 0.7f),
                             0.15f to Color.Black.copy(alpha = 0.55f),
-                            0.35f to Color(0xFF3E2723).copy(alpha = 0.3f),
-                            0.55f to Color(0xFFFFF8F0).copy(alpha = 0.85f),
-                            0.7f to Color(0xFFFFF8F0).copy(alpha = 0.97f),
-                            1.0f to Color(0xFFFFF8F0)
+                            0.35f to DarkBrown.copy(alpha = 0.3f),
+                            0.55f to WarmCream.copy(alpha = 0.85f),
+                            0.7f to WarmCream.copy(alpha = 0.97f),
+                            1.0f to WarmCream
                         )
                     )
                 )
@@ -227,7 +229,7 @@ fun HomeScreen(
                     Brush.verticalGradient(
                         colors = listOf(
                             Color.Transparent,
-                            Color(0xFFFFF8F0).copy(alpha = 0.95f)
+                            WarmCream.copy(alpha = 0.95f)
                         )
                     )
                 )
@@ -481,13 +483,13 @@ private fun SearchBar(
             Icon(
                 imageVector = Icons.Rounded.Search,
                 contentDescription = "Search",
-                tint = SearchHint,
+                tint = SearchHintGray,
                 modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(14.dp))
             Text(
                 text = "Find delicious recipes\u2026",
-                color = SearchHint,
+                color = SearchHintGray,
                 fontSize = 16.sp,
                 fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.Medium,
@@ -561,7 +563,7 @@ private fun CategoryStaggeredCard(
     val accentColor = try {
         Color(android.graphics.Color.parseColor(category.accentColor))
     } catch (e: Exception) {
-        Color(0xFFE0E0E0)
+        FallbackAccent
     }
 
     val iconResId = context.resources.getIdentifier(

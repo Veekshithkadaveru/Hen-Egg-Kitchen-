@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -93,6 +94,7 @@ fun BookmarksScreen(
             }
             else -> {
                 val recipes = state.bookmarkedRecipes
+                val listState = rememberLazyListState()
                 val visibleItems = remember(recipes) { mutableStateListOf<Int>() }
 
                 LaunchedEffect(recipes) {
@@ -104,6 +106,7 @@ fun BookmarksScreen(
                 }
 
                 LazyColumn(
+                    state = listState,
                     modifier = Modifier.fillMaxSize()
                 ) {
                     item {

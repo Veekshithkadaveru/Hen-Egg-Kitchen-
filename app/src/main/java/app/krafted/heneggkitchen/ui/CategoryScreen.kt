@@ -66,9 +66,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.data.RecipeRepository
 import app.krafted.heneggkitchen.data.models.Recipe
+import app.krafted.heneggkitchen.ui.theme.DarkBrown
+import app.krafted.heneggkitchen.ui.theme.FallbackAccent
 import app.krafted.heneggkitchen.ui.theme.TextPrimary
 import app.krafted.heneggkitchen.ui.theme.TextSecondaryLight
 import app.krafted.heneggkitchen.ui.theme.WarmAmber
+import app.krafted.heneggkitchen.ui.theme.WarmCream
 import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -93,7 +96,7 @@ fun CategoryScreen(
     val accentColor = try {
         Color(android.graphics.Color.parseColor(category.accentColor))
     } catch (e: Exception) {
-        Color(0xFFE0E0E0)
+        FallbackAccent
     }
 
     val backgroundResId = context.resources.getIdentifier(
@@ -138,10 +141,10 @@ fun CategoryScreen(
                         colorStops = arrayOf(
                             0.0f to Color.Black.copy(alpha = 0.75f),
                             0.12f to Color.Black.copy(alpha = 0.6f),
-                            0.28f to Color(0xFF3E2723).copy(alpha = 0.35f),
-                            0.45f to Color(0xFFFFF8F0).copy(alpha = 0.8f),
-                            0.6f to Color(0xFFFFF8F0).copy(alpha = 0.95f),
-                            1.0f to Color(0xFFFFF8F0)
+                            0.28f to DarkBrown.copy(alpha = 0.35f),
+                            0.45f to WarmCream.copy(alpha = 0.8f),
+                            0.6f to WarmCream.copy(alpha = 0.95f),
+                            1.0f to WarmCream
                         )
                     )
                 )

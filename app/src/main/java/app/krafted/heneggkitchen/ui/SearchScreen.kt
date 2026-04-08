@@ -67,6 +67,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.data.models.Recipe
+import app.krafted.heneggkitchen.ui.theme.SearchHintGray
 import app.krafted.heneggkitchen.ui.theme.TextPrimary
 import app.krafted.heneggkitchen.ui.theme.TextSecondary
 import app.krafted.heneggkitchen.ui.theme.WarmAmber
@@ -76,8 +77,6 @@ import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-private val SearchHint = Color(0xFF9CA3AF)
 
 @Composable
 fun SearchScreen(
@@ -237,7 +236,7 @@ private fun SearchTextField(
             Icon(
                 imageVector = Icons.Rounded.Search,
                 contentDescription = "Search",
-                tint = SearchHint,
+                tint = SearchHintGray,
                 modifier = Modifier.size(24.dp)
             )
 
@@ -247,7 +246,7 @@ private fun SearchTextField(
                 if (query.isEmpty()) {
                     Text(
                         text = "Search recipes, ingredients\u2026",
-                        color = SearchHint,
+                        color = SearchHintGray,
                         fontSize = 16.sp,
                         fontFamily = FontFamily.SansSerif,
                         fontWeight = FontWeight.Medium,

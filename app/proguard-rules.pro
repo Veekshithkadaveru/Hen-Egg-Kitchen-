@@ -19,3 +19,21 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep Gson-deserialized data model classes (recipes.json → data classes)
+-keep class app.krafted.heneggkitchen.data.models.** { *; }
+
+# Keep Room entity and DAO classes
+-keep class app.krafted.heneggkitchen.data.db.** { *; }
+
+# Gson: preserve generic type information
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn sun.misc.**
+-keep class com.google.gson.** { *; }
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Preserve stack traces for crash reporting
+-keepattributes SourceFile,LineNumberTable
