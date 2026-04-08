@@ -17,6 +17,7 @@ import app.krafted.heneggkitchen.ui.CookingModeScreen
 import app.krafted.heneggkitchen.ui.HomeScreen
 import app.krafted.heneggkitchen.ui.RecipeDetailScreen
 import app.krafted.heneggkitchen.ui.SearchScreen
+import app.krafted.heneggkitchen.ui.SplashScreen
 import app.krafted.heneggkitchen.viewmodel.BookmarkViewModel
 import app.krafted.heneggkitchen.viewmodel.CookingViewModel
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
@@ -25,12 +26,21 @@ import app.krafted.heneggkitchen.viewmodel.RecipeViewModel
 @Composable
 fun NavGraph(
     navController: NavHostController,
-    startDestination: String = Screen.Home.route
+    startDestination: String = Screen.Splash.route
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination
     ) {
+        composable(Screen.Splash.route) {
+            SplashScreen(
+                onNavigateToHome = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Splash.route) { inclusive = true }
+                    }
+                }
+            )
+        }
         composable(Screen.Home.route) {
             val app = LocalContext.current.applicationContext as HenEggKitchenApp
             val viewModel = remember { HomeViewModel(app.recipeRepository) }
