@@ -11,10 +11,13 @@ import androidx.navigation.compose.composable
 import app.krafted.heneggkitchen.HenEggKitchenApp
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
+import app.krafted.heneggkitchen.ui.BookmarksScreen
 import app.krafted.heneggkitchen.ui.CategoryScreen
 import app.krafted.heneggkitchen.ui.CookingModeScreen
 import app.krafted.heneggkitchen.ui.HomeScreen
 import app.krafted.heneggkitchen.ui.RecipeDetailScreen
+import app.krafted.heneggkitchen.ui.SearchScreen
+import app.krafted.heneggkitchen.viewmodel.BookmarkViewModel
 import app.krafted.heneggkitchen.viewmodel.CookingViewModel
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 import app.krafted.heneggkitchen.viewmodel.RecipeViewModel
@@ -22,14 +25,12 @@ import app.krafted.heneggkitchen.viewmodel.RecipeViewModel
 @Composable
 fun NavGraph(
     navController: NavHostController,
-    startDestination: String = Screen.Splash.route
+    startDestination: String = Screen.Home.route
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination
     ) {
-        composable(Screen.Splash.route) {
-        }
         composable(Screen.Home.route) {
             val app = LocalContext.current.applicationContext as HenEggKitchenApp
             val viewModel = remember { HomeViewModel(app.recipeRepository) }
@@ -165,6 +166,13 @@ fun NavGraph(
                 )
             }
         ) {
+            val app = LocalContext.current.applicationContext as HenEggKitchenApp
+            val viewModel = remember { BookmarkViewModel(app.recipeRepository, app.bookmarkDao) }
+            BookmarksScreen(
+                viewModel = viewModel,
+                onRecipeClick = { recipeId -> navController.navigate(Screen.RecipeDetail.createRoute(recipeId)) },
+                onBackClick = { navController.popBackStack() }
+            )
         }
         composable(
             Screen.Search.route,
@@ -181,6 +189,13 @@ fun NavGraph(
                 )
             }
         ) {
+            val app = LocalContext.current.applicationContext as HenEggKitchenApp
+            val viewModel = remember { HomeViewModel(app.recipeRepository) }
+            SearchScreen(
+                viewModel = viewModel,
+                onRecipeClick = { recipeId -> navController.navigate(Screen.RecipeDetail.createRoute(recipeId)) },
+                onBackClick = { navController.popBackStack() }
+            )
         }
     }
 }

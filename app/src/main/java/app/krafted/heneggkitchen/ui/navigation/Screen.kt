@@ -1,7 +1,6 @@
 package app.krafted.heneggkitchen.ui.navigation
 
 sealed class Screen(val route: String) {
-    object Splash : Screen("splash")
     object Home : Screen("home")
     object Category : Screen("category/{categoryId}") {
         fun createRoute(categoryId: Int) = "category/$categoryId"

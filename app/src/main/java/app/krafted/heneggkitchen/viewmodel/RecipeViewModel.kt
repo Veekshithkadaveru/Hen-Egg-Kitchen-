@@ -20,7 +20,8 @@ data class RecipeDetailUiState(
     val recipe: Recipe? = null,
     val currentServings: Int = 2,
     val isBookmarked: Boolean = false,
-    val scaledIngredients: List<Ingredient> = emptyList()
+    val scaledIngredients: List<Ingredient> = emptyList(),
+    val categoryBackground: String? = null
 )
 
 class RecipeViewModel(
@@ -32,12 +33,14 @@ class RecipeViewModel(
 
     fun loadRecipe(recipeId: Int) {
         val recipe = repository.getRecipeById(recipeId) ?: return
+        val category = repository.getCategoryById(recipe.categoryId)
         viewModelScope.launch {
             _state.update {
                 it.copy(
                     recipe = recipe,
                     currentServings = recipe.baseServings,
-                    scaledIngredients = recipe.ingredients
+                    scaledIngredients = recipe.ingredients,
+                    categoryBackground = category?.background
                 )
             }
         }

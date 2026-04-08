@@ -2,8 +2,13 @@ package app.krafted.heneggkitchen.ui
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -45,7 +50,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -61,6 +68,7 @@ import app.krafted.heneggkitchen.data.RecipeRepository
 import app.krafted.heneggkitchen.data.models.Recipe
 import app.krafted.heneggkitchen.ui.theme.TextPrimary
 import app.krafted.heneggkitchen.ui.theme.TextSecondaryLight
+import app.krafted.heneggkitchen.ui.theme.WarmAmber
 import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -149,21 +157,25 @@ fun CategoryScreen(
                 CategoryHeader(
                     categoryName = category.name,
                     recipeCount = recipes.size,
+                    categoryIndex = categoryId,
+                    accentColor = accentColor,
                     onBackClick = onBackClick
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(24.dp))
             }
 
             itemsIndexed(recipes, key = { _, recipe -> recipe.id }) { index, recipe ->
                 val itemAlpha = remember { Animatable(0f) }
                 val itemTranslationY = remember { Animatable(60f) }
+                val itemScale = remember { Animatable(0.95f) }
 
                 LaunchedEffect(visibleItems.contains(index)) {
                     if (visibleItems.contains(index)) {
                         coroutineScope {
                             launch { itemAlpha.animateTo(1f, tween(400, easing = FastOutSlowInEasing)) }
                             launch { itemTranslationY.animateTo(0f, spring(dampingRatio = 0.65f, stiffness = 180f)) }
+                            launch { itemScale.animateTo(1f, spring(dampingRatio = 0.7f, stiffness = 200f)) }
                         }
                     }
                 }
@@ -173,6 +185,8 @@ fun CategoryScreen(
                         .graphicsLayer {
                             alpha = itemAlpha.value
                             translationY = itemTranslationY.value
+                            scaleX = itemScale.value
+                            scaleY = itemScale.value
                         }
                         .padding(horizontal = 24.dp)
                         .padding(bottom = if (index == recipes.lastIndex) 40.dp else 14.dp)
@@ -192,6 +206,8 @@ fun CategoryScreen(
 private fun CategoryHeader(
     categoryName: String,
     recipeCount: Int,
+    categoryIndex: Int,
+    accentColor: Color,
     onBackClick: () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -237,15 +253,35 @@ private fun CategoryHeader(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text(
-            text = categoryName,
-            fontSize = 32.sp,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.Black,
-            letterSpacing = (-1.2).sp,
-            color = Color.White,
-            lineHeight = 36.sp
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = categoryName,
+                fontSize = 32.sp,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Black,
+                letterSpacing = (-1.2).sp,
+                color = Color.White,
+                lineHeight = 36.sp
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Box(
+                modifier = Modifier
+                    .size(28.dp)
+                    .clip(CircleShape)
+                    .background(Color.White.copy(alpha = 0.2f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "$categoryIndex",
+                    fontSize = 12.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.White.copy(alpha = 0.9f)
+                )
+            }
+        }
 
         Spacer(modifier = Modifier.height(6.dp))
 
@@ -279,6 +315,17 @@ private fun RecipeCard(
         label = "recipe_card_elevation"
     )
 
+    val infiniteTransition = rememberInfiniteTransition(label = "card_shimmer_${recipe.id}")
+    val shimmerX by infiniteTransition.animateFloat(
+        initialValue = -400f,
+        targetValue = 1400f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(4000, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "shimmer_sweep"
+    )
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -293,63 +340,89 @@ private fun RecipeCard(
         colors = CardDefaults.cardColors(containerColor = SurfaceColor)
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = recipe.title,
-                    fontSize = 18.sp,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.ExtraBold,
-                    letterSpacing = (-0.4).sp,
-                    color = TextPrimary,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
-                    lineHeight = 22.sp
-                )
-
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    MetadataPill(
-                        text = "${recipe.prepMins}m prep",
-                        accentColor = accentColor
-                    )
-                    MetadataPill(
-                        text = "${recipe.cookMins}m cook",
-                        accentColor = accentColor
-                    )
-                    MetadataPill(
-                        text = recipe.difficulty,
-                        accentColor = accentColor
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.width(12.dp))
-
             Box(
                 modifier = Modifier
-                    .size(32.dp)
-                    .clip(CircleShape)
-                    .background(accentColor.copy(alpha = 0.1f)),
-                contentAlignment = Alignment.Center
+                    .width(3.dp)
+                    .height(88.dp)
+                    .clip(RoundedCornerShape(topStart = 24.dp, bottomStart = 24.dp))
+                    .background(accentColor.copy(alpha = 0.7f))
+                    .align(Alignment.CenterVertically)
+            )
+
+            Row(
+                modifier = Modifier
+                    .weight(1f)
+                    .drawBehind {
+                        drawRect(
+                            brush = Brush.linearGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.White.copy(alpha = 0.08f),
+                                    Color.Transparent
+                                ),
+                                start = Offset(shimmerX, 0f),
+                                end = Offset(shimmerX + 250f, size.height)
+                            )
+                        )
+                    }
+                    .padding(20.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                    contentDescription = null,
-                    tint = accentColor,
-                    modifier = Modifier.size(16.dp)
-                )
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = recipe.title,
+                        fontSize = 18.sp,
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.ExtraBold,
+                        letterSpacing = (-0.4).sp,
+                        color = TextPrimary,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        lineHeight = 22.sp
+                    )
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        MetadataPill(
+                            text = "${recipe.prepMins}m prep",
+                            accentColor = accentColor
+                        )
+                        MetadataPill(
+                            text = "${recipe.cookMins}m cook",
+                            accentColor = accentColor
+                        )
+                        MetadataPill(
+                            text = recipe.difficulty,
+                            accentColor = accentColor
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                Box(
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clip(CircleShape)
+                        .background(accentColor.copy(alpha = 0.1f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                        contentDescription = null,
+                        tint = accentColor,
+                        modifier = Modifier.size(16.dp)
+                    )
+                }
             }
         }
     }

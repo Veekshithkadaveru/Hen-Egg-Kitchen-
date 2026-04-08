@@ -11,7 +11,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class CookingUiState(
-    val recipe: Recipe? = null
+    val recipe: Recipe? = null,
+    val categoryBackground: String? = null
 )
 
 class CookingViewModel(
@@ -23,7 +24,8 @@ class CookingViewModel(
     fun loadRecipe(recipeId: Int) {
         viewModelScope.launch {
             val recipe = repository.getRecipeById(recipeId) ?: return@launch
-            _state.update { it.copy(recipe = recipe) }
+            val category = repository.getCategoryById(recipe.categoryId)
+            _state.update { it.copy(recipe = recipe, categoryBackground = category?.background) }
         }
     }
 }

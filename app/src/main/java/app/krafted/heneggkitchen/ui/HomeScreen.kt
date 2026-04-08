@@ -17,6 +17,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -82,6 +83,7 @@ import app.krafted.heneggkitchen.data.models.RecipeCategory
 import app.krafted.heneggkitchen.ui.navigation.Screen
 import app.krafted.heneggkitchen.ui.theme.TextPrimary
 import app.krafted.heneggkitchen.ui.theme.TextSecondaryLight
+import app.krafted.heneggkitchen.ui.theme.WarmAmber
 import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import app.krafted.heneggkitchen.viewmodel.HomeViewModel
 import kotlinx.coroutines.delay
@@ -183,15 +185,27 @@ fun HomeScreen(
                 )
             ) {
                 Column {
-                    Text(
-                        text = "Discover",
-                        fontSize = 28.sp,
-                        fontFamily = FontFamily.SansSerif,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = (-0.5).sp,
-                        color = TextPrimary,
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
-                    )
+                    ) {
+                        Text(
+                            text = "Discover",
+                            fontSize = 28.sp,
+                            fontFamily = FontFamily.SansSerif,
+                            fontWeight = FontWeight.Black,
+                            letterSpacing = (-0.5).sp,
+                            color = TextPrimary
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Box(
+                            modifier = Modifier
+                                .width(40.dp)
+                                .height(3.dp)
+                                .clip(RoundedCornerShape(1.5.dp))
+                                .background(WarmAmber.copy(alpha = 0.6f))
+                        )
+                    }
 
                     CategoryGrid(
                         categories = state.categories,
@@ -203,6 +217,21 @@ fun HomeScreen(
                 }
             }
         }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+                .align(Alignment.BottomCenter)
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color(0xFFFFF8F0).copy(alpha = 0.95f)
+                        )
+                    )
+                )
+        )
     }
 }
 
@@ -419,6 +448,11 @@ private fun SearchBar(
             .padding(horizontal = 24.dp, vertical = 12.dp)
             .scale(scale)
             .clip(RoundedCornerShape(20.dp))
+            .border(
+                width = 1.dp,
+                color = Color.White.copy(alpha = 0.2f),
+                shape = RoundedCornerShape(20.dp)
+            )
             .background(Color.White.copy(alpha = 0.88f))
             .drawBehind {
                 drawRect(
@@ -506,9 +540,10 @@ private fun CategoryGrid(
                         translationY = itemTranslationY.value
                     }
             ) {
+                val cardHeight = 235.dp
                 CategoryStaggeredCard(
                     category = category,
-                    height = 230.dp,
+                    height = cardHeight,
                     onClick = { onCategoryClick(category.id) }
                 )
             }
@@ -552,7 +587,6 @@ private fun CategoryStaggeredCard(
         label = "card_elevation"
     )
 
-    // Floating animation for the icon
     val infiniteTransition = rememberInfiniteTransition(label = "float_${ category.id }")
     val iconOffsetY by infiniteTransition.animateFloat(
         initialValue = -3f,
@@ -593,7 +627,7 @@ private fun CategoryStaggeredCard(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1.3f)
+                    .weight(1.1f)
                     .background(
                         Brush.radialGradient(
                             colors = listOf(
@@ -604,12 +638,12 @@ private fun CategoryStaggeredCard(
                             center = Offset(0.5f, 0.4f),
                             radius = 400f
                         )
-                    ),
-                contentAlignment = Alignment.Center
+                    )
             ) {
                 Box(
                     modifier = Modifier
                         .size(60.dp)
+                        .align(Alignment.Center)
                         .offset(y = iconOffsetY.dp)
                         .drawBehind {
                             drawCircle(
@@ -622,6 +656,7 @@ private fun CategoryStaggeredCard(
                 if (iconResId != 0) {
                     val iconModifier = Modifier
                         .size(76.dp)
+                        .align(Alignment.Center)
                         .offset(y = iconOffsetY.dp)
                         .graphicsLayer {
                             rotationZ = iconRotation
@@ -645,12 +680,27 @@ private fun CategoryStaggeredCard(
                         )
                     }
                 }
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(24.dp)
+                        .align(Alignment.BottomCenter)
+                        .background(
+                            Brush.verticalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    SurfaceColor.copy(alpha = 0.6f)
+                                )
+                            )
+                        )
+                )
             }
 
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.9f)
+                    .weight(1.1f)
                     .background(SurfaceColor)
                     .padding(horizontal = 16.dp, vertical = 10.dp),
                 verticalArrangement = Arrangement.Center
@@ -672,9 +722,14 @@ private fun CategoryStaggeredCard(
                 ) {
                     Box(
                         modifier = Modifier
-                            .clip(RoundedCornerShape(8.dp))
+                            .clip(RoundedCornerShape(10.dp))
                             .background(accentColor.copy(alpha = 0.12f))
-                            .padding(horizontal = 8.dp, vertical = 3.dp)
+                            .border(
+                                width = 0.5.dp,
+                                color = accentColor.copy(alpha = 0.2f),
+                                shape = RoundedCornerShape(10.dp)
+                            )
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
                     ) {
                         Text(
                             text = "${category.recipes.size} recipes",
@@ -694,7 +749,7 @@ private fun CategoryStaggeredCard(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "→",
+                            text = "\u2192",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             color = accentColor

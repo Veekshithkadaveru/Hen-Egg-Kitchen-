@@ -2,10 +2,15 @@ package app.krafted.heneggkitchen.ui
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -30,6 +35,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
@@ -45,12 +51,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.krafted.heneggkitchen.data.formatAmount
@@ -59,6 +70,7 @@ import app.krafted.heneggkitchen.ui.components.ServingAdjuster
 import app.krafted.heneggkitchen.ui.theme.TextPrimary
 import app.krafted.heneggkitchen.ui.theme.TextSecondary
 import app.krafted.heneggkitchen.ui.theme.WarmAmber
+import app.krafted.heneggkitchen.ui.theme.WarmAmberLight
 import app.krafted.heneggkitchen.ui.theme.WarmCream
 import app.krafted.heneggkitchen.ui.theme.WarmOffWhite
 import app.krafted.heneggkitchen.viewmodel.RecipeViewModel
@@ -84,11 +96,22 @@ fun RecipeDetailScreen(
     val contentAlpha = remember { Animatable(0f) }
     val contentTranslationY = remember { Animatable(40f) }
 
+    val metadataAlpha = remember { Animatable(0f) }
+    val servingsAlpha = remember { Animatable(0f) }
+    val ingredientsAlpha = remember { Animatable(0f) }
+    val stepsAlpha = remember { Animatable(0f) }
+    val tipAlpha = remember { Animatable(0f) }
+    val buttonAlpha = remember { Animatable(0f) }
+
     LaunchedEffect(recipeId) {
         viewModel.loadRecipe(recipeId)
     }
 
     val recipe = state.recipe ?: return
+    val context = LocalContext.current
+    val backgroundResId = state.categoryBackground?.let {
+        context.resources.getIdentifier(it, "drawable", context.packageName)
+    } ?: 0
 
     LaunchedEffect(recipe) {
         delay(150)
@@ -96,6 +119,18 @@ fun RecipeDetailScreen(
             launch { contentAlpha.animateTo(1f, tween(500, easing = FastOutSlowInEasing)) }
             launch { contentTranslationY.animateTo(0f, spring(dampingRatio = 0.7f, stiffness = 200f)) }
         }
+        delay(100)
+        launch { metadataAlpha.animateTo(1f, tween(350, easing = FastOutSlowInEasing)) }
+        delay(80)
+        launch { servingsAlpha.animateTo(1f, tween(350, easing = FastOutSlowInEasing)) }
+        delay(80)
+        launch { ingredientsAlpha.animateTo(1f, tween(350, easing = FastOutSlowInEasing)) }
+        delay(80)
+        launch { stepsAlpha.animateTo(1f, tween(350, easing = FastOutSlowInEasing)) }
+        delay(80)
+        launch { tipAlpha.animateTo(1f, tween(350, easing = FastOutSlowInEasing)) }
+        delay(80)
+        launch { buttonAlpha.animateTo(1f, tween(350, easing = FastOutSlowInEasing)) }
     }
 
     Box(
@@ -103,6 +138,42 @@ fun RecipeDetailScreen(
             .fillMaxSize()
             .background(BackgroundWarm)
     ) {
+        if (backgroundResId != 0) {
+            val scrollOffset = scrollState.value
+            val backgroundOffset = (scrollOffset * 0.3f).coerceAtMost(200f)
+            val backgroundScale = 1f + (scrollOffset * 0.0002f).coerceAtMost(0.08f)
+
+            Image(
+                painter = painterResource(id = backgroundResId),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .graphicsLayer {
+                        scaleX = backgroundScale
+                        scaleY = backgroundScale
+                        translationY = -backgroundOffset
+                    }
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            colorStops = arrayOf(
+                                0.0f to Color.Black.copy(alpha = 0.7f),
+                                0.12f to Color.Black.copy(alpha = 0.55f),
+                                0.25f to Color(0xFF3E2723).copy(alpha = 0.3f),
+                                0.4f to BackgroundWarm.copy(alpha = 0.85f),
+                                0.55f to BackgroundWarm.copy(alpha = 0.97f),
+                                1.0f to BackgroundWarm
+                            )
+                        )
+                    )
+            )
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -114,7 +185,8 @@ fun RecipeDetailScreen(
                 title = recipe.title,
                 isBookmarked = state.isBookmarked,
                 onBackClick = onBackClick,
-                onBookmarkToggle = { viewModel.toggleBookmark() }
+                onBookmarkToggle = { viewModel.toggleBookmark() },
+                hasBackground = backgroundResId != 0
             )
 
             Column(
@@ -124,37 +196,61 @@ fun RecipeDetailScreen(
                         translationY = contentTranslationY.value
                     }
             ) {
-                MetadataRow(
-                    prepMins = recipe.prepMins,
-                    cookMins = recipe.cookMins,
-                    difficulty = recipe.difficulty,
-                    tags = recipe.tags
-                )
+                Box(
+                    modifier = Modifier.graphicsLayer { alpha = metadataAlpha.value }
+                ) {
+                    MetadataRow(
+                        prepMins = recipe.prepMins,
+                        cookMins = recipe.cookMins,
+                        difficulty = recipe.difficulty,
+                        tags = recipe.tags
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                ServingsSection(
-                    servings = state.currentServings,
-                    onDecrement = { viewModel.updateServings(state.currentServings - 1) },
-                    onIncrement = { viewModel.updateServings(state.currentServings + 1) }
-                )
+                Box(
+                    modifier = Modifier.graphicsLayer { alpha = servingsAlpha.value }
+                ) {
+                    ServingsSection(
+                        servings = state.currentServings,
+                        onDecrement = { viewModel.updateServings(state.currentServings - 1) },
+                        onIncrement = { viewModel.updateServings(state.currentServings + 1) }
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                IngredientsSection(ingredients = state.scaledIngredients)
+                Box(
+                    modifier = Modifier.graphicsLayer { alpha = ingredientsAlpha.value }
+                ) {
+                    IngredientsSection(ingredients = state.scaledIngredients)
+                }
 
                 Spacer(modifier = Modifier.height(28.dp))
 
-                StepsSection(steps = recipe.steps)
+                Box(
+                    modifier = Modifier.graphicsLayer { alpha = stepsAlpha.value }
+                ) {
+                    StepsSection(steps = recipe.steps)
+                }
 
                 if (recipe.tip.isNotBlank()) {
                     Spacer(modifier = Modifier.height(28.dp))
-                    TipSection(tip = recipe.tip)
+                    Box(
+                        modifier = Modifier.graphicsLayer { alpha = tipAlpha.value }
+                    ) {
+                        TipSection(tip = recipe.tip)
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                StartCookingButton(onClick = onStartCooking)
+                Box(
+                    modifier = Modifier.graphicsLayer { alpha = buttonAlpha.value }
+                ) {
+                    StartCookingButton(onClick = onStartCooking)
+                }
 
                 Spacer(modifier = Modifier.height(40.dp))
             }
@@ -167,7 +263,8 @@ private fun DetailHeader(
     title: String,
     isBookmarked: Boolean,
     onBackClick: () -> Unit,
-    onBookmarkToggle: () -> Unit
+    onBookmarkToggle: () -> Unit,
+    hasBackground: Boolean = false
 ) {
     val backInteraction = remember { MutableInteractionSource() }
     val backPressed by backInteraction.collectIsPressedAsState()
@@ -215,7 +312,12 @@ private fun DetailHeader(
                     .scale(backScale)
                     .clip(CircleShape)
                     .background(
-                        Brush.linearGradient(
+                        if (hasBackground) Brush.linearGradient(
+                            colors = listOf(
+                                Color.White.copy(alpha = 0.28f),
+                                Color.White.copy(alpha = 0.12f)
+                            )
+                        ) else Brush.linearGradient(
                             colors = listOf(
                                 TextPrimary.copy(alpha = 0.08f),
                                 TextPrimary.copy(alpha = 0.04f)
@@ -232,7 +334,7 @@ private fun DetailHeader(
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                     contentDescription = "Back",
-                    tint = TextPrimary,
+                    tint = if (hasBackground) Color.White else TextPrimary,
                     modifier = Modifier.size(24.dp)
                 )
             }
@@ -244,6 +346,7 @@ private fun DetailHeader(
                     .clip(CircleShape)
                     .background(
                         if (isBookmarked) AccentAmber.copy(alpha = 0.12f)
+                        else if (hasBackground) Color.White.copy(alpha = 0.15f)
                         else TextPrimary.copy(alpha = 0.06f)
                     )
                     .clickable(
@@ -256,7 +359,7 @@ private fun DetailHeader(
                 Icon(
                     imageVector = if (isBookmarked) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                     contentDescription = if (isBookmarked) "Remove bookmark" else "Add bookmark",
-                    tint = if (isBookmarked) AccentAmber else TextSecondary,
+                    tint = if (isBookmarked) AccentAmber else if (hasBackground) Color.White else TextSecondary,
                     modifier = Modifier.size(24.dp)
                 )
             }
@@ -270,7 +373,7 @@ private fun DetailHeader(
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Black,
             letterSpacing = (-0.8).sp,
-            color = TextPrimary,
+            color = if (hasBackground) Color.White else TextPrimary,
             lineHeight = 34.sp
         )
     }
@@ -304,7 +407,7 @@ private fun DetailPill(text: String) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(10.dp))
-            .background(AccentAmber.copy(alpha = 0.12f))
+            .background(Color(0xFF5D4037))
             .padding(horizontal = 10.dp, vertical = 5.dp)
     ) {
         Text(
@@ -312,7 +415,7 @@ private fun DetailPill(text: String) {
             fontSize = 12.sp,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
-            color = AccentAmber.copy(alpha = 0.85f),
+            color = Color.White,
             letterSpacing = 0.2.sp
         )
     }
@@ -373,14 +476,41 @@ private fun IngredientsSection(ingredients: List<Ingredient>) {
             .fillMaxWidth()
             .padding(horizontal = 24.dp)
     ) {
-        Text(
-            text = "Ingredients",
-            fontSize = 20.sp,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.Black,
-            letterSpacing = (-0.4).sp,
-            color = TextPrimary
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Ingredients",
+                fontSize = 20.sp,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Black,
+                letterSpacing = (-0.4).sp,
+                color = TextPrimary
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Box(
+                modifier = Modifier
+                    .width(32.dp)
+                    .height(3.dp)
+                    .clip(RoundedCornerShape(1.5.dp))
+                    .background(AccentAmber.copy(alpha = 0.5f))
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(AccentAmber.copy(alpha = 0.12f))
+                    .padding(horizontal = 8.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    text = "${ingredients.size}",
+                    fontSize = 12.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Bold,
+                    color = AccentAmber.copy(alpha = 0.85f)
+                )
+            }
+        }
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -439,21 +569,46 @@ private fun StepsSection(steps: List<String>) {
             .fillMaxWidth()
             .padding(horizontal = 24.dp)
     ) {
-        Text(
-            text = "Steps",
-            fontSize = 20.sp,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.Black,
-            letterSpacing = (-0.4).sp,
-            color = TextPrimary
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Steps",
+                fontSize = 20.sp,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Black,
+                letterSpacing = (-0.4).sp,
+                color = TextPrimary
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Box(
+                modifier = Modifier
+                    .width(32.dp)
+                    .height(3.dp)
+                    .clip(RoundedCornerShape(1.5.dp))
+                    .background(AccentAmber.copy(alpha = 0.5f))
+            )
+        }
 
         Spacer(modifier = Modifier.height(12.dp))
 
         steps.forEachIndexed { index, step ->
             StepItem(stepNumber = index + 1, text = step)
             if (index < steps.lastIndex) {
-                Spacer(modifier = Modifier.height(12.dp))
+                Box(
+                    modifier = Modifier
+                        .padding(start = 15.dp)
+                        .width(2.dp)
+                        .height(12.dp)
+                        .background(
+                            Brush.verticalGradient(
+                                colors = listOf(
+                                    AccentAmber.copy(alpha = 0.2f),
+                                    AccentAmber.copy(alpha = 0.08f)
+                                )
+                            )
+                        )
+                )
             }
         }
     }
@@ -477,7 +632,14 @@ private fun StepItem(stepNumber: Int, text: String) {
                 modifier = Modifier
                     .size(32.dp)
                     .clip(CircleShape)
-                    .background(StepNumberBg),
+                    .background(
+                        Brush.linearGradient(
+                            colors = listOf(
+                                WarmAmberLight.copy(alpha = 0.35f),
+                                StepNumberBg
+                            )
+                        )
+                    ),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
@@ -515,14 +677,23 @@ private fun TipSection(tip: String) {
         Column(
             modifier = Modifier.padding(20.dp)
         ) {
-            Text(
-                text = "Tip",
-                fontSize = 16.sp,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.ExtraBold,
-                color = AccentAmber.copy(alpha = 0.9f),
-                letterSpacing = (-0.2).sp
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "\uD83D\uDCA1",
+                    fontSize = 16.sp
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Tip",
+                    fontSize = 16.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = AccentAmber.copy(alpha = 0.9f),
+                    letterSpacing = (-0.2).sp
+                )
+            }
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -548,35 +719,78 @@ private fun StartCookingButton(onClick: () -> Unit) {
         label = "cooking_btn_scale"
     )
 
+    val infiniteTransition = rememberInfiniteTransition(label = "button_glow")
+    val glowAlpha by infiniteTransition.animateFloat(
+        initialValue = 0.15f,
+        targetValue = 0.35f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(2000, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "glow_pulse"
+    )
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp)
-            .scale(scale)
-            .clip(RoundedCornerShape(20.dp))
-            .background(
-                Brush.horizontalGradient(
-                    colors = listOf(
-                        AccentAmber,
-                        AccentAmber.copy(alpha = 0.85f)
-                    )
-                )
-            )
-            .clickable(
-                interactionSource = interactionSource,
-                indication = androidx.compose.material3.ripple(),
-                onClick = onClick
-            )
-            .padding(vertical = 18.dp),
+            .padding(horizontal = 24.dp),
         contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = "START COOKING MODE",
-            fontSize = 16.sp,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.ExtraBold,
-            letterSpacing = 1.sp,
-            color = Color.White
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .drawBehind {
+                    drawRoundRect(
+                        color = AccentAmber.copy(alpha = glowAlpha),
+                        cornerRadius = androidx.compose.ui.geometry.CornerRadius(24.dp.toPx()),
+                        size = androidx.compose.ui.geometry.Size(size.width + 8.dp.toPx(), size.height + 8.dp.toPx()),
+                        topLeft = Offset(-4.dp.toPx(), -4.dp.toPx())
+                    )
+                }
         )
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .scale(scale)
+                .clip(RoundedCornerShape(20.dp))
+                .background(
+                    Brush.horizontalGradient(
+                        colors = listOf(
+                            AccentAmber,
+                            AccentAmber.copy(alpha = 0.85f)
+                        )
+                    )
+                )
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = androidx.compose.material3.ripple(),
+                    onClick = onClick
+                )
+                .padding(vertical = 18.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "START COOKING MODE",
+                    fontSize = 16.sp,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 1.sp,
+                    color = Color.White
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+        }
     }
 }
